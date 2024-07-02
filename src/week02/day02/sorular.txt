@@ -1,0 +1,15 @@
+1- Dışarıdan taban değeri ve üs isimli 2 tane değişken alınacak. (2 üzeri 5 gibi) tabanın kuvvetini hesaplamak istiyorum.
+Hesaplamayı yaptıktan sonra, kullanıcıya ismini soracağım. Sonra çıktı olarak; "kullaniciIsmi + "n üzeri x isleminin sonucu " "
+
+2- a'dan z'ye alfabeyi yazdıralım.
+
+3- Klavyeden 0 girilinceye kadar sayı okumaya devam edelim. 0 girildiğinde sayıların toplamını ve ortalamasını ekrana yazdıralım.
+
+4- Kulanıcının girdiği sayının çarpım tablosunu yazdıran program. (Kullanıcı 7 girdiğinde 7'nin çarpım tablosu elemanları görünecek. )
+
+5- 1'den 100'e kadar olan çift sayıların toplamının, tek sayıların toplamına olan oranını bulan program.
+
+6- Telefon kodu ve Email kodumuz olsun (Numerik ve bunları elle girebiliriz) Sonrasında kullanıcıdan kodları girmesini isteyeceğiz, e-mail kodu hatalıysa ona göre bir mesaj, sms kodu hatalıysa ona göre bir mesaj, ikisi de doğru girildiğinde de "Başarıyla giriş yaptınız".
+
+7- Girilen sayının 5'in kuvveti olup olmadığını bulan program.
+
