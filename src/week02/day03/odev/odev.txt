@@ -1,0 +1,23 @@
+Bir program oluşturacağız.
+Kullanıcıyı önce konsolda karşılayıp,
+sonrasında kullanıcıya hangi dilde devam etmek istersiniz
+diye soracağız.
+
+Karşılama menüsü aşağıdaki gibidir;
+Hoşgeldiniz! / Welcome!
+Lutfen goruntuleme dilini seciniz. / Please select display language.
+
+1-- Turkish (TR)
+2-- English (EN)
+
+Kullanıcının vereceği cevaba göre bizi 2 farlı menü karşılayabilecek.
+
+Menü'nün Türkçe versiyonundaki işlevler aşağıdaki gibidir;
+0 -- Çıkış Yap
+1--  Merhaba Dünya yazdır.
+2-- Faktoriyel Hesapla.
+3-- Asal sayı kontrolü yap.
+
+Kullanıcı çıkış yapmadığı sürece menü'de kalacak ve menü işlevlerini kullanmaya devam edebilecek. Çıkış yapmaya karar vermesi durumunda;
+
+Program sonlandırılmıştır! Gorusmek uzere! gibi bir çıktı verip bitirebilirsiniz.
