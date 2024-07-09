@@ -1,0 +1,35 @@
+1- Dışarıdan girilen ülke ismi bizim array'imizde bulunuyor mu? Kontrol edelim.
+-> Türkiye, Japonya, Moğolistan, Amerika, Rusya, Çin
+
+2- En büyük ve en küçük sayiyi tespit edelim.
+-> 0, 120, 5, 85, -256, 16, 1258, 81, 14
+
+3- Dizideki en buyuk 2. sayiyi bulalim.
+-> 120, 130, 125, -256, 16, 1300, 1258, 81, 14
+
+4- Bir dizide ard arda gelen 2 indexdeki sayı değeri 2 ise true yazdırıp döngüyü sonlandiralim yoksa false yazsin.
+-> 2, -256, 2, 1258, 2, 2
+
+5 -
+Dizideki bütün sayıların toplamını yazdıralım.
+
+Dizinin her bir elemanı için;
+
+çift ise çifttir, tek ise tektir yazdıralım.
+-> 0, 120, 5, 85, -256, 16, 1258, 81, 14
+
+6- Dizi içerisinde 1 ve 4 sayilarinin kac kere geçtiğini ve 1 sayısının adeti 4 sayısının adetinden büyükse true değilse false yazdıralım.
+-> 1,4,5,6,1,1,4,8
+
+7- Dizide 13 sayısına denk gelene kadar devam edelim. 13 sayısı bulunduktan sonra ondan bir sonraki gelen sayı 13 değil ise 13'den sonra gelen sayıyı toplama ekleyelim.
+-> 1, 13, 13, 13, 5, 13
+
+8- String'i parçalara ayıralım, bir array'e kaydedelim. Sonra aşağıdaki örnek çıktıyı almaya çalışalım;
+
+"Adana şehrinin plaka kodu : 01"
+
+Aşağdaki şehirler tek bir String degerdir.
+-> 01-Adana;02-Adıyaman;03-Afyonkarahisar;04-Ağrı;05-Amasya;06-Ankara;07-Antalya;08-Artvin;09-Aydın;10-Balıkesir;42-Konya
+
+9- 2 Boyutlu Array'de çarpım tablosunu yazdıralım.
+
