@@ -1,0 +1,9 @@
+1- İki sayıyla 4 işlem yapabilen bir hesap makinesi uygulaması yapalım.
+Uygulama kullanıcı çıkış yapmadıgı sürece çalışmaya devam edecek.
+4 işlem için metotlardan faydalanalım.
+
+2- Bir metot yazalım ve bu metot dizi içindeki tek elemanları alıp,
+başka bir diziye atsın ve o diziyi yazdırsın.
+
+3- int[][] matris = { { 56, 23, 678, 231, 5 }, { 234, 21, 78, 26, 6 }, { 654,
+33, 32, 67, 2 }, { 189, 35, 56, 89, 8 } };
