@@ -1,0 +1,36 @@
+1- Girilen kelimedeki Turkce karakterleri, Ingilizce karakterlere ceviren bir program yazalım.
+		String[] ingilizceKarakter = { "I", "i", "s", "S", "c", "C", "g", "G", "u", "U", "o", "O" };
+
+		String[] turkceKarakter = { "İ", "ı", "ş", "Ş", "ç", "Ç", "ğ", "Ğ", "ü", "Ü", "ö", "Ö" };
+
+Örnegin;
+
+Çadır - > Cadir
+
+2- Kullanicidan 2 ya da 3 adet sayi alacagiz. (Kullanici belirtecek).
+
+2 sayi girilecekse bir metot icerisinde 2 adet sayi alip, toplama islemini yapip sonucu dondurelim.
+
+3 adet sayi girilecekse ayni isimli overloaded bir metot yazalim ve sayilari disaridan parametre olarak overloaded metoda vererek sayilari toplayalim.
+
+Yani;
+Main'de kac sayi alacagini ogren. Gelecek sayi miktarina gore kullanacagin metodu sec ve direktiflere gore metodu tasarla.
+
+
+
+3- Kullanici disaridan bir sayi girecek.
+
+Ornek girdi = 10;
+Sirasiyla;
+1- 10 + 50
+2- (10+50) * 30
+3- ((10+50)*30) -40
+4- (((10+50)*30) -40) / 20
+islemlerini yaptiracagiz.
+
+Bu islemleri tek bir satirda, metotlara, diger metotlari parametre olarak gecerek gerceklestirelim.
+
+
+
+4- Dizideki elemanlar arasındaki farkın en küçük olduğu değer nedir?
+int[] array = { 1, 5, -4, 3 };
