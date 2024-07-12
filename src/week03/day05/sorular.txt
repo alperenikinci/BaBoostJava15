@@ -1,0 +1,8 @@
+1- Taş - Kağıt - Makas oyunu yapalım.
+
+Her turda skor gösterilecek, bilgisayar :
+oyuncu :
+
+Her turdan sonra bir tur daha oynamak ister misiniz (E/H) seklinde bir soru sorulacak.
+
+Cevap H ise final skor yazdirilacak ve oyun bitirilecek.
