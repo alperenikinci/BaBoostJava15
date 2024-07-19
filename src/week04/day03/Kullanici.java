@@ -97,4 +97,20 @@ public class Kullanici {
     public LocalDate getDogumTarihi() {
         return dogumTarihi;
     }
+
+    @Override
+    public String toString() {
+        return "Kullanici{" +
+                "id=" + id +
+                ", isim='" + isim + '\'' +
+                ", soyisim='" + soyisim + '\'' +
+                ", email='" + email + '\'' +
+                ", telNo='" + telNo + '\'' +
+                ", sifre='" + sifre + '\'' +
+                ", kullaniciAdi='" + kullaniciAdi + '\'' +
+                ", tcKimlik='" + tcKimlik + '\'' +
+                ", kayitTarihi=" + kayitTarihi +
+                ", dogumTarihi=" + dogumTarihi +
+                '}';
+    }
 }

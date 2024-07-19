@@ -7,7 +7,6 @@ public class OzelListe {
     1- OzelListe isimli bir sinif olusturalim.
     Bu sinif icerisinde sayi dizisi ve dizi boyutu tutsun.
      */
-
     private int[] sayiDizisi;
     private int boyut;
 

@@ -2,6 +2,7 @@ package week04.day03;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -17,6 +18,8 @@ public class KullaniciKayitSistemi {
 //
 //        System.out.print("Lutfen telno giriniz : +90 ");
 //        scanner.nextLine();
+        menu();
+
 
     }
 
@@ -42,6 +45,10 @@ public class KullaniciKayitSistemi {
                 Kullanici kullanici = kullaniciKaydi();
                 break;
             }
+            case 2: {
+                KullaniciDB.findAll();
+                break;
+            }
         }
     }
 
@@ -54,15 +61,17 @@ public class KullaniciKayitSistemi {
            kullanici = new Kullanici();
            kullanici.setDogumTarihi(dogumTarihi);
 
-
            String[] isimSoyisim = isimSoyisimAl();
            kullanici.setIsim(isimSoyisim[0]);
            kullanici.setSoyisim(isimSoyisim[1]);
-           kullanici.setEmail(emailAl());
-           kullanici.setTelNo(telNoAl());
-           kullanici.setSifre(sifreAl());
-           kullanici.setKullaniciAdi(kullaniciAdiAl());
-           kullanici.setTcKimlik(tcKimlikAl());
+//           kullanici.setEmail(emailAl());
+//           kullanici.setTelNo(telNoAl());
+//           kullanici.setSifre(sifreAl());
+//           kullanici.setKullaniciAdi(kullaniciAdiAl());
+//           kullanici.setTcKimlik(tcKimlikAl());
+           KullaniciDB.save(kullanici);
+
+           return kullanici;
        } else{
            System.out.println("18 Yasindan kucukler kayit islemi gerceklestiremez.");
        }
@@ -72,7 +81,7 @@ public class KullaniciKayitSistemi {
     private static String tcKimlikAl() {
         String tcKimlik;
         while (true){
-            System.out.println("Lutfen TC kimlik numaranizi giriniz : ");
+            System.out.print("Lutfen TC kimlik numaranizi giriniz : ");
             tcKimlik = scanner.nextLine();
             if(tcKimlik.length()!=11){
                 System.out.println("TC Kimlik No 11 haneli olmalidir.");
@@ -97,7 +106,7 @@ public class KullaniciKayitSistemi {
 
         String kullaniciAdi;
         while (true){
-            System.out.println("Lutfen bir kullanici adi giriniz min 4 - max 16 karakter : ");
+            System.out.print("Lutfen bir kullanici adi giriniz min 4 - max 16 karakter : ");
             kullaniciAdi = scanner.nextLine();
             if(kullaniciAdi.length()<4){
                 System.out.println("Kullanici adi 4 karakterden kisa olamaz.");
@@ -115,7 +124,7 @@ public class KullaniciKayitSistemi {
         String sifre;
         String sifreYeniden;
         while (true){
-            System.out.println("Lutfen bir sifre giriniz min 8 - max 32 karakter : ");
+            System.out.print("Lutfen bir sifre giriniz min 8 - max 32 karakter : ");
             sifre = scanner.nextLine();
             if(sifre.length()<8){
                 System.out.println("Sifre 8 karakterden kisa olamaz.");
