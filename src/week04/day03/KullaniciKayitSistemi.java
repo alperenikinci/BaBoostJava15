@@ -2,8 +2,6 @@ package week04.day03;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Arrays;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class KullaniciKayitSistemi {
@@ -11,17 +9,7 @@ public class KullaniciKayitSistemi {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-//        Kullanici kullanici1= new Kullanici();
-//        Kullanici kullanici2 = new Kullanici();
-//
-//        System.out.println("Id: " + kullanici1.getId() + " kullaniciCount : " + Kullanici.getKullaniciCount() + " kayitTarihi : " +kullanici1.getKayitTarihi());
-//        System.out.println("Id: " + kullanici2.getId() + " kullaniciCount : " + Kullanici.getKullaniciCount() + " kayitTarihi : " +kullanici2.getKayitTarihi());
-//
-//        System.out.print("Lutfen telno giriniz : +90 ");
-//        scanner.nextLine();
         menu();
-
-
     }
 
     public static void menu() {
@@ -31,6 +19,8 @@ public class KullaniciKayitSistemi {
                 System.out.println("1- Kayit Ol");
                 System.out.println("2- Giris Yap");
                 System.out.println("3- Sifremi Unuttum");
+                System.out.println("8- Demo veri olustur");
+                System.out.println("9- Kullanicilari Goruntule");
                 System.out.println("0- Cikis");
                 System.out.print("Lutfen bir secim yapiniz : ");
                 try {
@@ -40,11 +30,11 @@ public class KullaniciKayitSistemi {
                 } finally {
                     scanner.nextLine();
                 }
-                durum(secim);
+                menuFunctions(secim);
         } while (secim != 0);
     }
 
-    private static void durum(int secim) {
+    private static void menuFunctions(int secim) {
         switch (secim) {
             case 1: {
                 Kullanici kullanici = kullaniciKaydi();
@@ -52,13 +42,127 @@ public class KullaniciKayitSistemi {
             }
             case 2: {
                 Kullanici kullanici = girisYap();
+                if (kullanici != null){
+                    kullaniciArayuzu(kullanici);
+                }
                 break;
             }
             case 3: {
                 sifremiUnuttum();
                 break;
             }
+            case 8: {
+                generateData();
+                break;
+            }
+            case 9: {
+               kullanicilariGoruntule();
+               break;
+            }
+            case 0: {
+                System.out.println("Program Sonlandirildi...");
+                break;
+            }
         }
+    }
+
+    private static void kullaniciArayuzu(Kullanici kullanici) {
+        int secim = -1;
+        do {
+            System.out.println("### KULLANICI ARAYUZU ###");
+            System.out.println("1- Bilgilerimi Goruntule");
+            System.out.println("7- TelNo Degistir");
+            System.out.println("8- Email Degistir");
+            System.out.println("9- Sifre Degistir");
+            System.out.println("0- Oturumu Sonlandir");
+            System.out.print("Lutfen bir secim yapiniz : ");
+            try {
+                secim = scanner.nextInt();
+            } catch (Exception e){
+                System.out.println("Gecerli bir secim yapiniz.");
+            } finally {
+                scanner.nextLine();
+            }
+            secim = userMenuFunctions(secim,kullanici);
+        } while (secim != 0);
+
+    }
+
+    private static int userMenuFunctions(int secim, Kullanici kullanici) {
+        switch (secim) {
+            case 1: {
+                kullaniciyiGoruntule(kullanici.getId());
+                break;
+            }
+
+            case 7: {
+                telNoDegistir(kullanici);
+                break;
+            }
+            case 8: {
+                emailDegistir(kullanici);
+                break;
+            }
+            case 9: {
+                if (sifreDegistir(kullanici)){
+                    System.out.println("Sifrenizi basariyla degistirdiniz. Lutfen tekrar giris yapiniz... ");
+                    return 0;
+                }
+                break;
+            }
+            case 0:{
+                System.out.println("Ana Menuye Donuluyor...");
+                break;
+            }
+        }
+        return secim;
+    }
+
+    private static void telNoDegistir(Kullanici kullanici) {
+        //TODO Potansiyel iptal islemleri icin case yapisi kurulabilir.
+        System.out.println("### Telefon Numarasi Degistirme ###");
+        kullanici.setTelNo(telNoAl());
+        KullaniciDB.update(kullanici);
+    }
+    private static void emailDegistir(Kullanici kullanici) {
+        //TODO Potansiyel iptal islemleri icin case yapisi kurulabilir.
+        System.out.println("### Email Degistirme ###");
+        kullanici.setEmail(emailAl());
+        KullaniciDB.update(kullanici);
+    }
+    private static boolean sifreDegistir(Kullanici kullanici) {
+        //TODO Potansiyel iptal islemleri icin case yapisi kurulabilir.
+        boolean isPasswordChanged = false;
+        System.out.println("### Sifre Degistirme ###");
+        System.out.print("Lutfen eski sifrenizi giriniz : ");
+        String eskiSifre = scanner.nextLine();
+        if(kullanici.getSifre().equals(eskiSifre)){
+            kullanici.setSifre(sifreAl());
+            KullaniciDB.update(kullanici);
+            isPasswordChanged = true;
+        }else {
+            System.out.println("Eski sifrenizi yanlis girdiniz !! ");
+        }
+        return isPasswordChanged;
+    }
+
+    private static Kullanici kullaniciyiGoruntule(int id) {
+        Kullanici kullanici = KullaniciDB.findById(id);
+        if(kullanici != null){
+            System.out.println(kullanici);
+            return kullanici;
+        } else {
+            System.out.println("Beklenmedik bir hata ile karsilasildi... ");
+            return null;
+        }
+    }
+
+    private static Kullanici[] kullanicilariGoruntule() {
+        Kullanici[] kullaniciArr = KullaniciDB.findAll();
+        if(kullaniciArr.length == 0){
+            System.out.println("Hic kullanici bulunamadi...\n");
+        }
+        return kullaniciArr;
     }
 
     private static Kullanici sifremiUnuttum() {
@@ -117,11 +221,7 @@ public class KullaniciKayitSistemi {
             kullanici.setTcKimlik(tcKimlikAl());
             kullanici.setKullaniciAdi(kullaniciAdiAl());
             kullanici.setSifre(sifreAl());
-
             KullaniciDB.save(kullanici);
-
-            KullaniciDB.findAll();
-
             return kullanici;
         } else {
             System.out.println("18 Yasindan kucukler kayit islemi gerceklestiremez.");
@@ -250,5 +350,20 @@ public class KullaniciKayitSistemi {
         int yas = Period.between(date, LocalDate.now()).getYears();
         boolean resitMi = (yas < 18) ? false : true;
         return resitMi;
+    }
+
+    private static void generateData(){
+    for (int i = 1; i<10; i++){
+        Kullanici kullanici = new Kullanici();
+            kullanici.setIsim("kullanici" +i);
+            kullanici.setSoyisim("soyisim" +i);
+            kullanici.setEmail(kullanici.getIsim()+ "@gmail.com");
+            kullanici.setTelNo("123123121"+i);
+            kullanici.setTcKimlik("1234567891"+i);
+            kullanici.setKullaniciAdi(kullanici.getIsim());
+            kullanici.setSifre("12345678");
+            kullanici.setDogumTarihi(LocalDate.of((1990+i),i,i));
+            KullaniciDB.save(kullanici);
+    }
     }
 }

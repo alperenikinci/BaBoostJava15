@@ -64,6 +64,7 @@ package week04.day03;
 
     static Kullanici findByUsernameAndPassword(String username, String password){
         for (Kullanici kullanici : kullaniciOzelListe.getKullaniciDizisi()){
+            //TODO try catch e al.
             if(kullanici.getKullaniciAdi().equals(username)&& kullanici.getSifre().equals(password)){
                 return kullanici;
             }
