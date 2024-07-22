@@ -7,17 +7,16 @@ public class KullaniciOzelListe {
     private Kullanici[] kullaniciDizisi;
     private int boyut;
 
+    KullaniciOzelListe(){
+        kullaniciDizisi = new Kullanici[0];
+}
+
     public Kullanici[] getKullaniciDizisi() {
             return kullaniciDizisi;
     }
 
     public Kullanici add(Kullanici kullanici){
         Kullanici[] tmp;
-        if(kullaniciDizisi == null){
-            kullaniciDizisi = new Kullanici[1];
-            kullaniciDizisi[0] = kullanici;
-            this.boyut = 1;
-        } else {
             tmp = new Kullanici[this.boyut+1];
             for (int i = 0; i<boyut; i++){
                 tmp[i] = kullaniciDizisi[i];
@@ -25,7 +24,6 @@ public class KullaniciOzelListe {
             tmp[this.boyut] = kullanici;
             kullaniciDizisi = tmp;
             this.boyut++;
-        }
         return kullaniciDizisi[boyut-1];
     }
 
@@ -79,5 +77,9 @@ public class KullaniciOzelListe {
         for (int i = indexesToBeRemoved.length-1; i>=0;i--){
             remove(indexesToBeRemoved[i]);
         }
+    }
+
+    public Kullanici replace(int index, Kullanici kullanici) {
+      return kullaniciDizisi[index] = kullanici;
     }
 }
