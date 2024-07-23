@@ -94,7 +94,6 @@ public class KullaniciKayitSistemi {
                 kullaniciyiGoruntule(kullanici.getId());
                 break;
             }
-
             case 7: {
                 telNoDegistir(kullanici);
                 break;

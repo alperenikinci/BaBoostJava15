@@ -2,29 +2,29 @@ package week04.day03;
 
 import java.util.Arrays;
 
-public class KullaniciOzelListe {
+public class MailOzelListe {
 
-    private Kullanici[] kullaniciDizisi;
+    private Mail[] mailDizisi;
     private int boyut;
 
-    KullaniciOzelListe(){
-        kullaniciDizisi = new Kullanici[0];
+    MailOzelListe(){
+        mailDizisi = new Mail[0];
 }
 
-    public Kullanici[] getKullaniciDizisi() {
-            return kullaniciDizisi;
+    public Mail[] getMailDizisi() {
+            return mailDizisi;
     }
 
-    public Kullanici add(Kullanici kullanici){
-        Kullanici[] tmp;
-            tmp = new Kullanici[this.boyut+1];
+    public Mail add(Mail mail){
+        Mail[] tmp;
+            tmp = new Mail[this.boyut+1];
             for (int i = 0; i<boyut; i++){
-                tmp[i] = kullaniciDizisi[i];
+                tmp[i] = mailDizisi[i];
             }
-            tmp[this.boyut] = kullanici;
-            kullaniciDizisi = tmp;
+            tmp[this.boyut] = mail;
+            mailDizisi = tmp;
             this.boyut++;
-        return kullaniciDizisi[boyut-1];
+        return mailDizisi[boyut-1];
     }
 
 
@@ -38,16 +38,16 @@ public class KullaniciOzelListe {
             }
         }else {
             try {
-                Kullanici[] tmp = new Kullanici[this.boyut - 1];
+                Mail[] tmp = new Mail[this.boyut - 1];
 //            int j = 0;
                 for (int i = 0; i < tmp.length; i++) {
                     if (i < index) {
-                        tmp[i] = kullaniciDizisi[i];
+                        tmp[i] = mailDizisi[i];
                     } else {
-                        tmp[i] = kullaniciDizisi[i + 1];
+                        tmp[i] = mailDizisi[i + 1];
                     }
                 }
-                kullaniciDizisi = tmp;
+                mailDizisi = tmp;
                 boyut--;
             } catch (NegativeArraySizeException e) {
                 System.out.println("Dizide cikarilabilecek eleman bulunmamaktadir. ( Dizi BOS!! ) ");
@@ -59,7 +59,7 @@ public class KullaniciOzelListe {
     public void list(){
         System.out.print("{");
         for (int i = 0; i<boyut; i++){
-            System.out.print(kullaniciDizisi[i]);
+            System.out.print(mailDizisi[i]);
             if(i != boyut-1){
                 System.out.print(",");
             }
@@ -67,11 +67,11 @@ public class KullaniciOzelListe {
         System.out.println("}");
     }
 
-    public Kullanici[] addAll(Kullanici[] kullaniciDizisi){
-        for (int i = 0; i<kullaniciDizisi.length;i++){
-            add(kullaniciDizisi[i]);
+    public Mail[] addAll(Mail[] mailDizisi){
+        for (int i = 0; i<mailDizisi.length;i++){
+            add(mailDizisi[i]);
         }
-        return kullaniciDizisi;
+        return mailDizisi;
     }
     public void removeAllIndexes(int[] indexesToBeRemoved){
        Arrays.sort(indexesToBeRemoved);
@@ -80,7 +80,7 @@ public class KullaniciOzelListe {
         }
     }
 
-    public Kullanici replace(int index, Kullanici kullanici) {
-      return kullaniciDizisi[index] = kullanici;
+    public Mail replace(int index, Mail mail) {
+      return mailDizisi[index] = mail;
     }
 }

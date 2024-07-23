@@ -6,6 +6,9 @@ package week04.day03;
     static Kullanici save(Kullanici kullanici){
         return kullaniciOzelListe.add(kullanici);
     }
+    static Kullanici[] saveAll(Kullanici[] kullaniciArr){
+        return kullaniciOzelListe.addAll(kullaniciArr);
+    }
     static Kullanici update(Kullanici kullanici){
         Kullanici[] kullaniciDizisi = kullaniciOzelListe.getKullaniciDizisi();
         int index=0;
