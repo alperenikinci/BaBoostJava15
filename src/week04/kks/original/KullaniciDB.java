@@ -1,4 +1,4 @@
-package week04.day03;
+package week04.kks.original;
 
 /*default*/ class KullaniciDB {
     static KullaniciOzelListe kullaniciOzelListe = new KullaniciOzelListe();

@@ -1,4 +1,4 @@
-package week04.day03;
+package week04.kks.original;
 
 import java.time.LocalDate;
 
@@ -22,7 +22,6 @@ public class Message {
     }
 
     public void setAlici(Kullanici alici) {
-        System.out.println("MESAJDAKI SET ALICI");
         this.alici = alici;
     }
 
@@ -52,12 +51,9 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "id=" + id +
-                ", alici=" + alici +
-                ", gonderici=" + gonderici +
-                ", icerik='" + icerik + '\'' +
-                ", gonderilmeTarihi=" + gonderilmeTarihi +
-                '}';
+        return "Message toString";
+    }
+    public String domatesPatates(){
+        return "Message Domates ve Patates";
     }
 }

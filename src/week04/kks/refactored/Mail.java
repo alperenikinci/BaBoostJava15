@@ -1,4 +1,4 @@
-package week04.day03;
+package week04.kks.refactored;
 
 import java.time.LocalDate;
 
@@ -6,7 +6,6 @@ public class Mail extends Message {
 
     private static int mailCount = 0;
     private String baslik;
-
 
 
     public Mail(){
@@ -29,13 +28,15 @@ public class Mail extends Message {
 
     @Override
     public String toString() {
-        return "Mail{" +
-                "baslik='" + baslik + '\'' +
-                ", id=" + id +
-                ", alici=" + alici +
-                ", gonderici=" + gonderici +
-                ", icerik='" + icerik + '\'' +
-                ", gonderilmeTarihi=" + gonderilmeTarihi +
-                '}';
+        return "Mail toString";
+    }
+
+    @Override
+    public String domatesPatates(){
+        return "Mail Domates Ve Patates";
+    }
+
+    public void maileHasMetot(){
+        System.out.println("MaileHasMetot");
     }
 }

@@ -1,4 +1,4 @@
-package week04.day03;
+package week04.kks.original;
 
 import java.time.LocalDate;
 import java.time.Period;

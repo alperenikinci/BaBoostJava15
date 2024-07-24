@@ -1,4 +1,4 @@
-package week04.day03;
+package week04.kks.original;
 
 class MailDB {
     static MailOzelListe mailOzelListe = new MailOzelListe();
