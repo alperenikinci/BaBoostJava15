@@ -1,21 +1,14 @@
-package week04.kks.refactored;
+package week04.kks.refactored.entities;
 
 import java.time.LocalDate;
 
-public class Message {
-    protected int id;
+public class Message extends BaseEntity {
+
     protected Kullanici alici;
     protected Kullanici gonderici;
     protected String icerik;
     protected LocalDate gonderilmeTarihi;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Kullanici getAlici() {
         return alici;

@@ -1,4 +1,4 @@
-package week04.kks.refactored;
+package week04.kks.refactored.entities;
 
 import java.time.LocalDate;
 
@@ -28,15 +28,13 @@ public class Mail extends Message {
 
     @Override
     public String toString() {
-        return "Mail toString";
-    }
-
-    @Override
-    public String domatesPatates(){
-        return "Mail Domates Ve Patates";
-    }
-
-    public void maileHasMetot(){
-        System.out.println("MaileHasMetot");
+        return "Mail{" +
+                "baslik='" + baslik + '\'' +
+                ", id=" + id +
+                ", alici=" + alici +
+                ", gonderici=" + gonderici +
+                ", icerik='" + icerik + '\'' +
+                ", gonderilmeTarihi=" + gonderilmeTarihi +
+                '}';
     }
 }

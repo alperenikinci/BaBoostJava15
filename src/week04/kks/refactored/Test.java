@@ -1,48 +1,52 @@
 package week04.kks.refactored;
 
+
+import week04.kks.refactored.databases.KullaniciDB;
+import week04.kks.refactored.databases.MailDB;
+import week04.kks.refactored.databases.SMSDB;
+import week04.kks.refactored.entities.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Test {
 
     public static void main(String[] args) {
-        Mail mail = new Mail();
-        Mail mail2 = new Mail();
-        Mail mail3 = new Mail();
-        MailOzelListe mailOzelListe = new MailOzelListe();
-        Mail[] mailList = {mail,mail2,mail3};
-        mailOzelListe.addAll(mailList);
-        mailOzelListe.list();
 
-        KullaniciOzelListe kullaniciOzelListe = new KullaniciOzelListe();
+        KullaniciDB kullaniciDB = new KullaniciDB();
+
         Kullanici kullanici = new Kullanici();
-        Kullanici kullanici2 = new Kullanici();
-        Kullanici kullanici3 = new Kullanici();
-
-        kullaniciOzelListe.add(kullanici);
-        kullaniciOzelListe.add(kullanici2);
-        kullaniciOzelListe.add(kullanici3);
-        kullaniciOzelListe.list();
-
-        SMSOzelListe smsOzelListe = new SMSOzelListe();
-        SMS sms = new SMS();
-        SMS sms2 = new SMS();
-        SMS sms3 = new SMS();
-
-        smsOzelListe.add(sms);
-        smsOzelListe.add(sms2);
-        smsOzelListe.add(sms3);
-        smsOzelListe.list();
+        kullanici.setIsim("Alperen");
+        kullanici.setSoyisim("Ikinci");
+        Kullanici kullanici1 = new Kullanici();
+        kullanici1.setIsim("Alex");
+        kullanici1.setSoyisim("Walker");
+        kullaniciDB.saveAll(List.of(kullanici,kullanici1));
+        System.out.println(kullaniciDB.findAll());
 
 
-        OzelListe mailOzelListe1 =  new MailOzelListe();
-//        OzelListe<Mail> mailOzelListe1 =  new MailOzelListe();
-        mailOzelListe1.add(new SMS());
-        mailOzelListe1.add(new Mail());
-        mailOzelListe1.add(new Mail());
-        mailOzelListe1.add(new Mail());
-        mailOzelListe1.add(new Mail());
-        mailOzelListe1.list();
+        kullanici1.setIsim("Joseph");
+        kullaniciDB.update(kullanici1);
 
-        String str = ((MailOzelListe) mailOzelListe1).domates;
+        MailDB mailDB = new MailDB();
+        mailDB.save(new Mail());
+        mailDB.save(new Mail());
+        SMSDB smsdb = new SMSDB();
+        smsdb.save(new SMS());
+        smsdb.save(new SMS());
 
+//        List<Kullanici> kullaniciList = kullaniciDB.findAll();
+//        kullaniciList.get(1).setIsim("Joseph");
 
+        System.out.println(kullaniciDB.findAll());
+        System.out.println(mailDB.findAll());
+        System.out.println(smsdb.findAll());
+        System.out.println(kullaniciDB.findByID(1));
+
+        BaseEntity entity = new Kullanici();
+        BaseEntity baseEntity = new Mail();
+        Message message = new Mail();
+        BaseEntity baseEntity1 = new Message();
     }
+
 }

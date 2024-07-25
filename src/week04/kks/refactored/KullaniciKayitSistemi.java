@@ -1,12 +1,17 @@
 //package week04.kks.refactored;
 //
+//import week04.kks.refactored.databases.KullaniciDB;
+//import week04.kks.refactored.entities.Kullanici;
+//
 //import java.time.LocalDate;
 //import java.time.Period;
+//import java.util.List;
 //import java.util.Scanner;
 //
 //public class KullaniciKayitSistemi {
 //
 //    static Scanner scanner = new Scanner(System.in);
+//    static KullaniciDB kullaniciDB = new KullaniciDB();
 //
 //    public static void main(String[] args) {
 //        menu();
@@ -121,13 +126,13 @@
 //        //TODO Potansiyel iptal islemleri icin case yapisi kurulabilir.
 //        System.out.println("### Telefon Numarasi Degistirme ###");
 //        kullanici.setTelNo(telNoAl());
-//        KullaniciDB.update(kullanici);
+//        kullaniciDB.update(kullanici);
 //    }
 //    private static void emailDegistir(Kullanici kullanici) {
 //        //TODO Potansiyel iptal islemleri icin case yapisi kurulabilir.
 //        System.out.println("### Email Degistirme ###");
 //        kullanici.setEmail(emailAl());
-//        KullaniciDB.update(kullanici);
+//        kullaniciDB.update(kullanici);
 //    }
 //    private static boolean sifreDegistir(Kullanici kullanici) {
 //        //TODO Potansiyel iptal islemleri icin case yapisi kurulabilir.
@@ -137,7 +142,7 @@
 //        String eskiSifre = scanner.nextLine();
 //        if(kullanici.getSifre().equals(eskiSifre)){
 //            kullanici.setSifre(sifreAl());
-//            KullaniciDB.update(kullanici);
+//            kullaniciDB.update(kullanici);
 //            isPasswordChanged = true;
 //        }else {
 //            System.out.println("Eski sifrenizi yanlis girdiniz !! ");
@@ -146,7 +151,7 @@
 //    }
 //
 //    private static Kullanici kullaniciyiGoruntule(int id) {
-//        Kullanici kullanici = KullaniciDB.findById(id);
+//        Kullanici kullanici = kullaniciDB.findByID(id);
 //        if(kullanici != null){
 //            System.out.println(kullanici);
 //            return kullanici;
@@ -156,12 +161,12 @@
 //        }
 //    }
 //
-//    private static Kullanici[] kullanicilariGoruntule() {
-//        Kullanici[] kullaniciArr = KullaniciDB.findAll();
-//        if(kullaniciArr.length == 0){
+//    private static List<Kullanici> kullanicilariGoruntule() {
+//        List<Kullanici> kullaniciList = kullaniciDB.findAll();
+//        if(kullaniciList.size() == 0){
 //            System.out.println("Hic kullanici bulunamadi...\n");
 //        }
-//        return kullaniciArr;
+//        return kullaniciList;
 //    }
 //
 //    private static Kullanici sifremiUnuttum() {

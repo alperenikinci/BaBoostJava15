@@ -1,10 +1,9 @@
-package week04.kks.refactored;
+package week04.kks.refactored.entities;
 
 import java.time.LocalDate;
 
-public class Kullanici {
+public class Kullanici extends BaseEntity {
     private static int kullaniciCount = 0;
-    private int id;
     private String isim;
     private String soyisim;
     private String email;
@@ -14,6 +13,7 @@ public class Kullanici {
     private String tcKimlik;
     private LocalDate kayitTarihi;
     private LocalDate dogumTarihi;
+
 
 
     public Kullanici(){
