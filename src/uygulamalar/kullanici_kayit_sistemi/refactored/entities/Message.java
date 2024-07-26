@@ -1,21 +1,14 @@
-package week04.kks.original;
+package uygulamalar.kullanici_kayit_sistemi.refactored.entities;
 
 import java.time.LocalDate;
 
-public class Message {
-    protected int id;
+public class Message extends BaseEntity {
+
     protected Kullanici alici;
     protected Kullanici gonderici;
     protected String icerik;
     protected LocalDate gonderilmeTarihi;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Kullanici getAlici() {
         return alici;
@@ -45,15 +38,14 @@ public class Message {
         return gonderilmeTarihi;
     }
 
-    public void setGonderilmeTarihi(LocalDate gonderilmeTarihi) {
-        this.gonderilmeTarihi = gonderilmeTarihi;
-    }
-
     @Override
     public String toString() {
-        return "Message toString";
-    }
-    public String domatesPatates(){
-        return "Message Domates ve Patates";
+        return "Message{" +
+                "alici=" + alici +
+                ", gonderici=" + gonderici +
+                ", icerik='" + icerik + '\'' +
+                ", gonderilmeTarihi=" + gonderilmeTarihi +
+                ", id=" + id +
+                '}';
     }
 }

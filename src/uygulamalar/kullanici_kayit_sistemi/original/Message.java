@@ -1,14 +1,21 @@
-package week04.kks.refactored.entities;
+package uygulamalar.kullanici_kayit_sistemi.original;
 
 import java.time.LocalDate;
 
-public class Message extends BaseEntity {
-
+public class Message {
+    protected int id;
     protected Kullanici alici;
     protected Kullanici gonderici;
     protected String icerik;
     protected LocalDate gonderilmeTarihi;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Kullanici getAlici() {
         return alici;

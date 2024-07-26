@@ -1,4 +1,4 @@
-package week04.kks.refactored.entities;
+package uygulamalar.kullanici_kayit_sistemi.refactored.entities;
 
 
 import java.time.LocalDate;

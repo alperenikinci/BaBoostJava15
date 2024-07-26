@@ -1,7 +1,5 @@
-package week04.kks.refactored.utility;
+package uygulamalar.kullanici_kayit_sistemi.refactored.utility;
 
-
-import week04.kks.refactored.entities.BaseEntity;
 
 import java.util.List;
 

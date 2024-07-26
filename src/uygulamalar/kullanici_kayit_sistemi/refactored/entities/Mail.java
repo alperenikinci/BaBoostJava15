@@ -1,4 +1,4 @@
-package week04.kks.refactored.entities;
+package uygulamalar.kullanici_kayit_sistemi.refactored.entities;
 
 import java.time.LocalDate;
 
@@ -29,12 +29,10 @@ public class Mail extends Message {
     @Override
     public String toString() {
         return "Mail{" +
-                "baslik='" + baslik + '\'' +
-                ", id=" + id +
-                ", alici=" + alici +
-                ", gonderici=" + gonderici +
-                ", icerik='" + icerik + '\'' +
-                ", gonderilmeTarihi=" + gonderilmeTarihi +
-                '}';
+                "\ngonderen: "+ gonderici.getEmail() +
+                "\nalici: "+alici.getEmail()+
+                "\nbaslik: "+ baslik+
+                "\nicerik: "+ icerik+
+                "\n}";
     }
 }

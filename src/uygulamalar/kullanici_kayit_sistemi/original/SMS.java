@@ -1,4 +1,4 @@
-package week04.kks.original;
+package uygulamalar.kullanici_kayit_sistemi.original;
 
 
 public class SMS extends Message{

@@ -1,4 +1,4 @@
-package week04.kks.original;
+package uygulamalar.kullanici_kayit_sistemi.original;
 
 class MailDB {
     static MailOzelListe mailOzelListe = new MailOzelListe();

@@ -1,13 +1,13 @@
-package week04.kks.refactored.utility;
+package uygulamalar.kullanici_kayit_sistemi.refactored.utility;
 
-import week04.kks.refactored.entities.BaseEntity;
+import uygulamalar.kullanici_kayit_sistemi.refactored.entities.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseManager<T extends BaseEntity> implements ICRUD<T> {
 
-    ArrayList<T> veriListesi = new ArrayList<>();
+    protected ArrayList<T> veriListesi = new ArrayList<>();
 
     @Override
     public T save(T t) {

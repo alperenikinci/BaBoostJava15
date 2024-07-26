@@ -1,8 +1,7 @@
-package week04.kks.refactored.entities;
+package uygulamalar.kullanici_kayit_sistemi.refactored.entities;
 
 public class BaseEntity {
     protected int id;
-
     public int getId() {
         return id;
     }

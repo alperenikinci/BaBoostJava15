@@ -1,4 +1,4 @@
-package week04.kks.refactored.entities;
+package uygulamalar.kullanici_kayit_sistemi.refactored.entities;
 
 import java.time.LocalDate;
 
@@ -56,10 +56,6 @@ public class Kullanici extends BaseEntity {
 
     public static int getKullaniciCount() {
         return kullaniciCount;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getIsim() {
