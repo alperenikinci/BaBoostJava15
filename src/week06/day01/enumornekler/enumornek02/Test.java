@@ -1,4 +1,4 @@
-package week06.day01.enumornek02;
+package week06.day01.enumornekler.enumornek02;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +74,6 @@ public class Test {
                 }
             }
         }
-
         return null;
     }
 

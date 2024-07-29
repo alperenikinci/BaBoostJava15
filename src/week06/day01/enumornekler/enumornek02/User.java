@@ -1,4 +1,4 @@
-package week06.day01.enumornek02;
+package week06.day01.enumornekler.enumornek02;
 
 public class User {
     private String username;

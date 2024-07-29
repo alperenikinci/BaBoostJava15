@@ -1,4 +1,4 @@
-package week06.day01.enumornek01;
+package week06.day01.enumornekler.enumornek01;
 
 public class UstGiyim {
 

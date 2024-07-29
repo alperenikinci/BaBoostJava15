@@ -1,4 +1,4 @@
-package week06.day01.enumornek03;
+package week06.day01.enumornekler.enumornek03;
 
 public enum EUserStatus {
 

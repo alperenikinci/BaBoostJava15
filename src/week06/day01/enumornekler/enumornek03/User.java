@@ -1,6 +1,4 @@
-package week06.day01.enumornek03;
-
-import week06.day01.enumornek02.ERole;
+package week06.day01.enumornekler.enumornek03;
 
 public class User {
     private String username;

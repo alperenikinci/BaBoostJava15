@@ -1,4 +1,4 @@
-package week06.day01.enumornek03;
+package week06.day01.enumornekler.enumornek03;
 
 public enum EKatilTiers {
     TIER0("Herkes Icin Gecerli",0 ),TIER1("Katil Uyesi",5d),TIER2("Has Uye",20d);
