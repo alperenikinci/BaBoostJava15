@@ -6,6 +6,10 @@ public class Calisan {
     private String soyisim;
     private String unvan;
     private double maas;
+    //init blogu
+    {
+        CalisanDB.calisanList.add(this);
+    }
 
     public void maasAl(){
         System.out.println("Maas alindi");

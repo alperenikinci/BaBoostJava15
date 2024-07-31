@@ -1,6 +1,6 @@
 package week06.day01.interfaceornekler;
 
-public class InsanKaynaklari extends Calisan { // insan kaynaklari is a calisan
+public class InsanKaynaklari extends Calisan implements NonSpecificEmployees { // insan kaynaklari is a calisan
 
     public double zamYap(Calisan calisan, double zamOrani) {
         double zamliMaas = 0;

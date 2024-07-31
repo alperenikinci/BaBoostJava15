@@ -12,8 +12,6 @@ public class Muhendis extends Calisan implements SahaCalismasiYapabilir,MaasaGor
         setUnvan(maas);
     }
 
-
-
     @Override
     public void sahaCalismasiYap() {
         System.out.println("Muhendis saha calismasi yurutuyor...");

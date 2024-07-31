@@ -9,4 +9,11 @@ public class Tekniker extends Calisan implements SahaCalismasiYapabilir{
     public void sahaCalismasiYap() {
         System.out.println(this.getClass().getSimpleName() + " saha calismasi yurutuyor.");
     }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName()+"{"
+                +super.toStringTemplate()
+                +"}";
+    }
 }

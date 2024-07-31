@@ -25,4 +25,11 @@ public class OfisCalisani extends Calisan implements MaasaGoreUnvanAlabilir{
         super.setMaas(maas);
         setUnvan(maas);
     }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName()+"{"
+                +super.toStringTemplate()
+                +"}";
+    }
 }
