@@ -1,4 +1,4 @@
-package week04.day01.maraton01;
+package maratonlar.maraton01;
 
 import java.util.Scanner;
 
