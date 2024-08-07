@@ -12,6 +12,14 @@ public class Customer extends Person {
         super(++customerCount);
         customerDB.save(this);
     }
+    public Customer(CustomerDB customerDB,String name,String surname,String email,String phoneNo) {
+        super(++customerCount);
+        setName(name);
+        setSurname(surname);
+        this.email = email;
+        this.phoneNo = phoneNo;
+        customerDB.save(this);
+    }
 
     public static int getCustomerCount() {
         return customerCount;

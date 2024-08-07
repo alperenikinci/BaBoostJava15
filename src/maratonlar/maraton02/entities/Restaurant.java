@@ -19,6 +19,14 @@ public class Restaurant extends BaseEntity {
         this.status = EStatus.OPEN;
         restaurantDB.save(this);
     }
+    public Restaurant(RestaurantDB restaurantDB,String name,int maximumCapacity) {
+        super(++restaurantCount);
+        this.name = name;
+        this.maximumCapacity = maximumCapacity;
+        this.currentCapacity = maximumCapacity;
+        this.status = EStatus.OPEN;
+        restaurantDB.save(this);
+    }
     public Restaurant(int maximumCapacity) {
         super(++restaurantCount);
         this.maximumCapacity = maximumCapacity;

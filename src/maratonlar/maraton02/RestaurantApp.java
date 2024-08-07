@@ -4,10 +4,14 @@ import maratonlar.maraton02.databases.CustomerDB;
 import maratonlar.maraton02.databases.ManagerDB;
 import maratonlar.maraton02.databases.ReservationDB;
 import maratonlar.maraton02.databases.RestaurantDB;
+import maratonlar.maraton02.entities.Customer;
 import maratonlar.maraton02.entities.Manager;
+import maratonlar.maraton02.entities.Restaurant;
 import maratonlar.maraton02.modules.CustomerModule;
 import maratonlar.maraton02.modules.ManagerModule;
+import maratonlar.maraton02.utility.DataGenerator;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RestaurantApp {
@@ -21,6 +25,8 @@ public class RestaurantApp {
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         manager = new Manager(managerDB,restaurantDB,customerDB,reservationDB);
+        List<Customer> customers = DataGenerator.generateCustomers(10,customerDB); // Generate 10 customers
+        List<Restaurant> restaurants = DataGenerator.generateRestaurants(5,restaurantDB);
         startApplication();
     }
 
@@ -49,11 +55,11 @@ public class RestaurantApp {
                 break;
             }
             case 2:{
-                CustomerModule.customerModule(manager,restaurantDB,reservationDB);
+                CustomerModule.customerModule(manager,restaurantDB,reservationDB,customerDB);
                 break;
             }
             case 0:{
-                System.out.println("CASE 0");
+                System.out.println("Thanks for coming...");
                 break;
             }
         }

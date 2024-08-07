@@ -7,28 +7,31 @@ import maratonlar.maraton02.databases.RestaurantDB;
 import maratonlar.maraton02.entities.Customer;
 import maratonlar.maraton02.entities.Manager;
 import maratonlar.maraton02.entities.Reservation;
+import maratonlar.maraton02.entities.Restaurant;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CustomerModule {
 
     private static RestaurantDB restaurantDatabase;
     private static ReservationDB reservationDatabase;
+    private static CustomerDB customerDatabase;
     private static Manager manager;
     private static Scanner scanner = new Scanner(System.in);
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
 
-    public static int customerModule(Manager mainManager, RestaurantDB restaurantDB, ReservationDB reservationDB) {
+    public static int customerModule(Manager mainManager, RestaurantDB restaurantDB, ReservationDB reservationDB,CustomerDB customerDB) {
         manager = mainManager;
         restaurantDatabase = restaurantDB;
         reservationDatabase = reservationDB;
+        customerDatabase = customerDB;
         int opt = 0;
-//        do {
         customerWelcomeMenuOptions(customerWelcomeMenu());
-//        }while (opt!=0);
         return opt;
     }
 
@@ -47,13 +50,11 @@ public class CustomerModule {
     private static int customerWelcomeMenuOptions(int opt) {
         switch (opt) {
             case 1: {
-                do {
-                    opt = reservationMenuOptions(reservationMenu());
-                } while (opt != 0);
-
+                    reservationMenuOptions(reservationMenu());
                 break;
             }
             case 2: {
+                    restaurantMenuOptions(restaurantMenu());
                 break;
             }
             case 0: {
@@ -63,7 +64,6 @@ public class CustomerModule {
         }
         return opt;
     }
-
     private static int reservationMenu() {
         System.out.println("1- Make Reservation");
         System.out.println("2- Cancel Reservation");
@@ -80,8 +80,92 @@ public class CustomerModule {
                 makeReservation();
                 break;
             }
+            case 2: {
+                cancelReservation();
+                break;
+            }
+            case 0: {
+                System.out.println("Returning to Customer Menu");
+                customerWelcomeMenuOptions(customerWelcomeMenu());
+            }
         }
         return opt;
+    }
+
+    private static int restaurantMenu() {
+        System.out.println("1- Search for a restaurant");
+        System.out.println("2- List all the restaurants");
+        System.out.println("0- Back to Customer Menu");
+        System.out.print("Please select an option : ");
+        int opt = scanner.nextInt();
+        scanner.nextLine();
+        return opt;
+    }
+
+    private static int restaurantMenuOptions(int opt){
+        switch (opt){
+            case 1: {
+                searchARestaurant();
+                customerWelcomeMenuOptions(customerWelcomeMenu());
+                break;
+            }
+            case 2: {
+                manager.findAllRestaurant();
+                customerWelcomeMenuOptions(customerWelcomeMenu());
+                break;
+            }
+            case 0: {
+                System.out.println("Returning to Customer Menu");
+                customerWelcomeMenuOptions(customerWelcomeMenu());
+                break;
+            }
+            default:{
+                System.out.println("Please choose a valid option...");
+            }
+        }
+        return opt;
+    }
+
+
+
+    private static void searchARestaurant() {
+        System.out.print("Please enter the name of the restaurant : ");
+        String restaurantName = scanner.nextLine();
+        Restaurant restaurant = manager.findRestaurantByName(restaurantName);
+        if(restaurant != null){
+            System.out.println(restaurant);
+        } else {
+            System.out.println("There is no restaurant found by the name : " + restaurantName);
+        }
+    }
+
+    private static void cancelReservation() {
+        List<Reservation> reservationList = new ArrayList<>();
+        System.out.print("Please enter your email : ");
+        String email = scanner.nextLine();
+        System.out.print("Please enter your phone number : ");
+        String phoneNo = scanner.nextLine();
+        if(customerDatabase.existsByEmailAndPhoneNo(email,phoneNo)){
+            int customerId = manager.findByEmailAndPhoneNo(email,phoneNo).getId();
+            reservationList = reservationDatabase.findPendingByCustomerId(customerId);
+            if(!reservationList.isEmpty()){
+                reservationList.forEach(System.out::println);
+                System.out.print("Enter the id of the reservation you wish to cancel : ");
+                int reservationId = scanner.nextInt();
+                scanner.nextLine();
+                Reservation reservation = reservationDatabase.findByID(reservationId);
+                if (reservation!=null){
+                    manager.cancelReservation(reservation);
+                    System.out.println("Your reservation is cancelled.");
+                } else {
+                    System.out.println("There is no reservation found by the id : " + reservationId);
+                }
+            } else {
+                System.out.println("There are no reservation found by your name... ");
+            }
+        } else {
+            System.out.println("There is no customer found by your credentials...");
+        }
     }
 
     private static void makeReservation() {
@@ -109,6 +193,10 @@ public class CustomerModule {
                 }else{
                     makeReservationForACustomer(customer);
                 }
+                break;
+            }
+            default:{
+                System.out.println("Please choose a valid option... ");
                 break;
             }
         }
