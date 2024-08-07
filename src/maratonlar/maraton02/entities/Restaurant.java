@@ -76,7 +76,8 @@ public class Restaurant extends BaseEntity {
     @Override
     public String toString() {
         return "Restaurant{" +
-                "name='" + name + '\'' +
+                "id ="+getId()+
+                ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNo='" + phoneNo + '\'' +
                 ", maximumCapacity=" + maximumCapacity +

@@ -14,10 +14,12 @@ public class ManagerModule {
     private static RestaurantDB restaurantDatabase;
 
 
-    public static void managerModule(ManagerDB managerDB, RestaurantDB restaurantDB){
+    public static int managerModule(ManagerDB managerDB, RestaurantDB restaurantDB){
         managerDatabase = managerDB;
         restaurantDatabase = restaurantDB;
-        managerWelcomeMenuOptions(managerWelcomeMenu());
+        int opt;
+        opt = managerWelcomeMenuOptions(managerWelcomeMenu());
+        return opt;
     }
 
     private static int managerWelcomeMenu() {
@@ -35,9 +37,11 @@ public class ManagerModule {
                 Manager manager1 = login();
                 if(manager1!=null){
                     manager = manager1;
-                    managerLoginMenuOptions(managerLoginMenu());
-                };
-                return 1;
+                    do {
+                       opt = managerLoginMenuOptions(managerLoginMenu());
+                    } while(opt !=0);
+                }
+                return opt;
             }
             case 0: {
                 System.out.println("Returning to Main Menu");
@@ -50,11 +54,10 @@ public class ManagerModule {
         }
     }
 
-
-
     private static int managerLoginMenu() {
-        System.out.println("1- Add Restaurant");
-        System.out.println("2- Delete Restaurant");
+        System.out.println("1- Restaurant Operations");
+        System.out.println("2- Customer Operations");
+        System.out.println("3- Reservation Options");
         System.out.println("0- Logout");
         System.out.print("Please choose an option : ");
         int opt = scanner.nextInt();
@@ -64,11 +67,11 @@ public class ManagerModule {
     private static int managerLoginMenuOptions(int opt) {
         switch (opt){
             case 1 : {
-                addRestaurant();
+                opt = managerRestaurantMenuOptions(managerRestaurantMenu());
                 break;
             }
             case 2 : {
-                deleteRestaurant();
+                managerCustomerMenuOptions(managerCustomerMenu());
                 break;
             }
             case 0 : {
@@ -83,6 +86,93 @@ public class ManagerModule {
         }
         return opt;
     }
+
+    private static int managerRestaurantMenu(){
+        System.out.println("1- Add Restaurant");
+        System.out.println("2- Delete Restaurant");
+        System.out.println("0- Back to Manager Menu");
+        System.out.print("Please choose an option : ");
+        int opt = scanner.nextInt();
+        scanner.nextLine();
+        return opt;
+    }
+    private static int managerRestaurantMenuOptions(int opt){
+        switch (opt){
+            case 1 : {
+                addRestaurant();
+                break;
+            }
+            case 2 : {
+                deleteRestaurant();
+                break;
+            }
+            case 0 : {
+                System.out.println("Returning to Manager Main Menu...");
+                break;
+            }
+            default: {
+                System.out.println("Please choose a valid option...");
+                managerRestaurantMenuOptions(managerRestaurantMenu());
+                break;
+            }
+        }
+        return opt;
+    }
+
+    private static int managerCustomerMenu() {
+        System.out.println("1- Add Customer");
+        System.out.println("2- Delete Customer");
+        System.out.println("3- Search Customer");
+        System.out.println("4- List Customers");
+        System.out.println("0- Logout");
+        System.out.print("Please choose an option : ");
+        int opt = scanner.nextInt();
+        scanner.nextLine();
+        return opt;
+    }
+
+    private static int managerCustomerMenuOptions(int opt){
+        switch (opt){
+            case 1 : {
+                addCustomer();
+                break;
+            }
+            case 2 : {
+                deleteCustomer();
+                break;
+            }
+            case 3 : {
+                searchCustomer();
+                break;
+            }
+            case 4: {
+                listCustomers();
+            }
+            case 0 : {
+                System.out.println("Returning to Manager Main Menu...");
+                break;
+            }
+            default: {
+                System.out.println("Please choose a valid option...");
+                managerRestaurantMenuOptions(managerRestaurantMenu());
+                break;
+            }
+        }
+        return opt;
+    }
+
+    private static void addCustomer() {
+        System.out.print("Please enter a name : ");
+        String name = scanner.nextLine();
+        System.out.print("Please enter a surname : ");
+        String surname = scanner.nextLine();
+        System.out.print("Please enter phone number : ");
+        String phoneNo = scanner.nextLine();
+        System.out.print("Please enter email : ");
+        String email = scanner.nextLine();
+        manager.addCustomer(name,surname,phoneNo,email);
+    }
+
 
     private static Restaurant addRestaurant() {
         System.out.println("### ADD RESTAURANT ###");
