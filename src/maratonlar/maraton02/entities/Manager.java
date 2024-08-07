@@ -7,7 +7,9 @@ import maratonlar.maraton02.databases.RestaurantDB;
 import maratonlar.maraton02.utility.enums.EReservationStatus;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Manager extends Person {
 
@@ -40,6 +42,7 @@ public class Manager extends Person {
             reservation.setRestaurantId(restaurant.getId());
             reservation.setReservationDateTime(reservationDateTime);
             restaurant.setCurrentCapacity(restaurant.getCurrentCapacity() - personCount);
+            System.out.println("Your reservation is completed : " + reservation);
             return reservation;
         } else {
             System.out.println("Restaurant capacity is not able for table for " + personCount);
@@ -54,7 +57,9 @@ public class Manager extends Person {
     }
 
     public List<Reservation> listReservations() {
-        return reservationDB.findAll();
+        List<Reservation> reservationList = reservationDB.findAll();
+        reservationList.forEach(System.out::println);
+        return reservationList;
     }
 
     // RESTAURANT METHODS
@@ -119,10 +124,11 @@ public class Manager extends Person {
             System.out.println("There is no customer found by name and surname : " + name + " " + surname);
             return null;
         } else if (customerList.size() == 1) {
+            System.out.println(customerList.get(0));
             return customerList.get(0);
         } else {
             System.out.println("There are more than one customer by the name and surname : " + name + " " + surname
-                    + "\nPlease provide your email and phoneNo : ");
+                    + "\nPlease provide email and phoneNo : ");
             return null;
         }
     }
@@ -130,6 +136,7 @@ public class Manager extends Person {
     public Customer findByEmailAndPhoneNo(String email, String phoneNo) {
         Customer customer = customerDB.findByEmailAndPhoneNo(email, phoneNo);
         if (customer != null) {
+            System.out.println(customer);
             return customer;
         } else {
             System.out.println("There is no customer found with provided informations...");

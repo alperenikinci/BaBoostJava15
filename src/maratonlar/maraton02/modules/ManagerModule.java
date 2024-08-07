@@ -2,9 +2,12 @@ package maratonlar.maraton02.modules;
 
 import maratonlar.maraton02.databases.ManagerDB;
 import maratonlar.maraton02.databases.RestaurantDB;
+import maratonlar.maraton02.entities.BaseEntity;
+import maratonlar.maraton02.entities.Customer;
 import maratonlar.maraton02.entities.Manager;
 import maratonlar.maraton02.entities.Restaurant;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ManagerModule {
@@ -67,11 +70,15 @@ public class ManagerModule {
     private static int managerLoginMenuOptions(int opt) {
         switch (opt){
             case 1 : {
-                opt = managerRestaurantMenuOptions(managerRestaurantMenu());
+                managerRestaurantMenuOptions(managerRestaurantMenu());
                 break;
             }
             case 2 : {
                 managerCustomerMenuOptions(managerCustomerMenu());
+                break;
+            }
+            case 3 :{
+                managerReseravationMenuOptions(managerReservationMenu());
                 break;
             }
             case 0 : {
@@ -90,7 +97,7 @@ public class ManagerModule {
     private static int managerRestaurantMenu(){
         System.out.println("1- Add Restaurant");
         System.out.println("2- Delete Restaurant");
-        System.out.println("0- Back to Manager Menu");
+        System.out.println("0- Back to Main Menu");
         System.out.print("Please choose an option : ");
         int opt = scanner.nextInt();
         scanner.nextLine();
@@ -124,7 +131,7 @@ public class ManagerModule {
         System.out.println("2- Delete Customer");
         System.out.println("3- Search Customer");
         System.out.println("4- List Customers");
-        System.out.println("0- Logout");
+        System.out.println("0- Back To Main Menu");
         System.out.print("Please choose an option : ");
         int opt = scanner.nextInt();
         scanner.nextLine();
@@ -161,6 +168,33 @@ public class ManagerModule {
         return opt;
     }
 
+
+    private static int managerReservationMenu(){
+        System.out.println("1- List all Reservations");
+        System.out.println("0- Back To Main Menu");
+        System.out.print("Please choose an option : ");
+        int opt = scanner.nextInt();
+        scanner.nextLine();
+        return opt;
+    }
+
+    private static int managerReseravationMenuOptions(int opt){
+        switch (opt){
+            case 1: {
+                manager.listReservations();
+                break;
+            }
+            case 0: {
+                System.out.println("Returning to Manager Main Menu...");
+                break;
+            }
+            default:{
+                System.out.println("Please choose a valid option...");
+                break;
+            }
+        }
+        return opt;
+    }
     private static void addCustomer() {
         System.out.print("Please enter a name : ");
         String name = scanner.nextLine();
@@ -171,6 +205,47 @@ public class ManagerModule {
         System.out.print("Please enter email : ");
         String email = scanner.nextLine();
         manager.addCustomer(name,surname,phoneNo,email);
+    }
+
+    private static void deleteCustomer(){
+        manager.findAllCustomers();
+        System.out.print("Please enter id of the customer you want to delete : ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        manager.deleteCustomer(id);
+    }
+
+    private static void searchCustomer(){
+        System.out.println("1- Search by name and surname");
+        System.out.println("2- Search by email and phone number");
+        System.out.print("Please choose an option : ");
+        int opt = scanner.nextInt();
+        scanner.nextLine();
+        switch (opt) {
+            case 1: {
+                System.out.print("Please enter the name : ");
+                String name = scanner.nextLine();
+                System.out.print("Please enter the surname : ");
+                String surname = scanner.nextLine();
+                manager.findByNameAndSurname(name,surname);
+                break;
+            }
+            case 2: {
+                System.out.print("Please enter the email : ");
+                String email = scanner.nextLine();
+                System.out.print("Please enter the phone number : ");
+                String phoneNo = scanner.nextLine();
+                manager.findByEmailAndPhoneNo(email,phoneNo);
+                break;
+            }
+            default: {
+                System.out.println("Please choose a valid option. Returning to Manager Menu");
+                break;
+            }
+        }
+    }
+    private static void listCustomers(){
+        manager.findAllCustomers();
     }
 
 

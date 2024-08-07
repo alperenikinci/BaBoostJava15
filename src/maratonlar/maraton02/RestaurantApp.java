@@ -5,6 +5,7 @@ import maratonlar.maraton02.databases.ManagerDB;
 import maratonlar.maraton02.databases.ReservationDB;
 import maratonlar.maraton02.databases.RestaurantDB;
 import maratonlar.maraton02.entities.Manager;
+import maratonlar.maraton02.modules.CustomerModule;
 import maratonlar.maraton02.modules.ManagerModule;
 
 import java.util.Scanner;
@@ -28,10 +29,10 @@ public class RestaurantApp {
         do {
             opt = welcomeMenuOptions(welcomeMenu());
         } while (opt!=0);
-
     }
 
     private static int welcomeMenu() {
+        System.out.println("### RESTAURANT APP ###");
         System.out.println("1- Proceed as Manager");
         System.out.println("2- Proceed as Customer");
         System.out.println("0- Exit");
@@ -48,7 +49,7 @@ public class RestaurantApp {
                 break;
             }
             case 2:{
-                System.out.println("CASE 2");
+                CustomerModule.customerModule(manager,restaurantDB,reservationDB);
                 break;
             }
             case 0:{

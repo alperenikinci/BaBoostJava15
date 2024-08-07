@@ -27,4 +27,13 @@ public class RestaurantDB extends DatabaseManager<Restaurant> {
         }
         return restaurantsWithCapacity;
     }
+
+    public boolean existsById(int restaurantId) {
+        for (Restaurant restaurant : veriListesi){
+            if (restaurant.getId()==restaurantId){
+                return true;
+            }
+        }
+        return false;
+    }
 }
