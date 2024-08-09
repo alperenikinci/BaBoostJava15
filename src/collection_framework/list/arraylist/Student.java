@@ -1,4 +1,4 @@
-package collection_framework.arraylist;
+package collection_framework.list.arraylist;
 
 public class Student {
 

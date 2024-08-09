@@ -1,4 +1,4 @@
-package collection_framework.hashset;
+package collection_framework.set.hashset;
 
 import java.util.*;
 

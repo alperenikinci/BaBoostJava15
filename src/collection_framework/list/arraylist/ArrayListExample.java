@@ -1,4 +1,4 @@
-package collection_framework.arraylist;
+package collection_framework.list.arraylist;
 
 import java.util.*;
 
@@ -110,6 +110,5 @@ public class ArrayListExample {
         System.out.println("\n############################\n");
         System.out.println("indexOf(student) ile belli bir ogrencinin liste index konumunu bulma...");
         System.out.println(studentList.get(studentList.indexOf(student)));
-
     }
 }
